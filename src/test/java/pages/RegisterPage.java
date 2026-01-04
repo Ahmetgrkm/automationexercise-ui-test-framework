@@ -6,9 +6,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import utilities.Driver;
 
-public class AutomationPage {
+public class RegisterPage {
 
-    public AutomationPage() {
+    public RegisterPage() {
         PageFactory.initElements(Driver.getDriver(), this); //// PageFactory, @FindBy notasyonlarını kullanmamızı sağlar.
     }
 
@@ -21,6 +21,9 @@ public class AutomationPage {
 
     @FindBy(xpath = "//input[@data-qa='signup-email']")
     public WebElement signupEmailKutusu;
+
+    @FindBy(xpath = "//*[text()='Email Address already exist!']")
+    public WebElement EmailALreadyExist;
 
     @FindBy(xpath = "//button[@data-qa='signup-button']")
     public WebElement signupButonu;

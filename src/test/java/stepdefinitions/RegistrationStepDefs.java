@@ -3,16 +3,17 @@ package stepdefinitions;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
-import pages.AutomationPage;
+import pages.LoginPage;
+import pages.RegisterPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
 public class RegistrationStepDefs {
 
     // Page objesini oluşturarak elementlere ulaşıyoruz
-    AutomationPage page = new AutomationPage();
+    RegisterPage page = new RegisterPage();
     Faker faker = new Faker(); // Sahte veri üretici
+    LoginPage loginPage = new LoginPage();
 
     @Given("kullanıcı {string} sayfasına gider")
     public void kullanici_sayfasina_gider(String urlKey) {
@@ -27,7 +28,8 @@ public class RegistrationStepDefs {
     @When("yeni kullanıcı kısmında {string} ve {string} bilgilerini girer")
     public void yeni_kullanici_kisminda_ve_bilgilerini_girer(String isim, String email) {
         page.signupNameKutusu.sendKeys(faker.name().fullName());
-        page.signupEmailKutusu.sendKeys(faker.internet().emailAddress());
+        //page.signupEmailKutusu.sendKeys(faker.internet().emailAddress());
+        page.signupEmailKutusu.sendKeys("mehmet@gmail.com");
     }
 
     @When("{string} butonuna tıklar")
@@ -39,6 +41,12 @@ public class RegistrationStepDefs {
         } else if (butonIsmi.equalsIgnoreCase("Create Account")) {
             // Reklam çıkma ihtimaline karşı JS ile tıklıyoruz (Daha garanti)
             utilities.ReusableMethods.clickWithJS(page.createAccountButonu);
+        } else if (butonIsmi.equalsIgnoreCase("Login")) {
+            loginPage.Loginbutton.click();
+        } else if (butonIsmi.equalsIgnoreCase("Delete Account")) {
+            loginPage.deleteAccount.click();
+        } else if (butonIsmi.equalsIgnoreCase("Logout")) {
+            loginPage.Logout.click();
         }
     }
 
@@ -67,7 +75,7 @@ public class RegistrationStepDefs {
 
     @Then("hesabın başarıyla oluşturulduğunu doğrular")
     public void hesabin_basariyla_olusturuldugunu_dogrular() {
-        AutomationPage freshPage = new AutomationPage();
+        RegisterPage freshPage = new RegisterPage();
         Assert.assertTrue(page.accountCreatedYazisi.isDisplayed());
     }
 }

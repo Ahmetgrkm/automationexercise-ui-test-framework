@@ -11,3 +11,10 @@ Feature: US01 Kullanıcı Kayıt Fonksiyonu
     And kayıt formundaki zorunlu bilgileri doldurur
     And "Create Account" butonuna tıklar
     Then hesabın başarıyla oluşturulduğunu doğrular
+
+    @already_register
+    Scenario: Kullanıcı zaten var olan email ile kayıt olmaya çalışır
+      When kullanıcı "Signup / Login" butonuna tıklar
+      And yeni kullanıcı kısmında "isim" ve "email" bilgilerini girer
+      And "Signup" butonuna tıklar
+      Then "Email Address already exist!" yazısının görünür olduğunu doğrular
