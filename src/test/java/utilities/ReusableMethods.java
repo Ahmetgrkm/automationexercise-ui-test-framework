@@ -24,4 +24,9 @@ public class ReusableMethods {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+    public static void scrollToElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 }
