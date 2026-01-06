@@ -25,4 +25,8 @@ public class SubscriptionPage {
 
     @FindBy(css = "div.form-group") // 'hide' kısmını yazmıyoruz çünkü o değişiyor
     public WebElement flashMessage;
+    //-----------------------------------------------------------CART İÇİNDEKİ SUBSCRİPTİON----------------------
+
+    @FindBy(xpath = "//a[contains(@href, 'view_cart')]")
+    public WebElement cartButton;
 }

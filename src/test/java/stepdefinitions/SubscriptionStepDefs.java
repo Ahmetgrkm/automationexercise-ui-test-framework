@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -68,5 +69,10 @@ public class SubscriptionStepDefs {
             // Eğer 5 saniye içinde 'hide' class'ı kaybolmazsa burası çalışır
             Assert.fail("Başarı mesajı belirlenen sürede görünür olmadı veya 'hide' class'ı kalkmadı!");
         }
+    }
+
+    @Given("kullanici cart sayfasina gider")
+    public void kullaniciCartSayfasinaGider() {
+        subscriptionPage.cartButton.click();
     }
 }
