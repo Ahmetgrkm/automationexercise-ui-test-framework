@@ -5,61 +5,22 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class ProductSearchPage {
-    public  ProductSearchPage() {
+    public ProductSearchPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
-    @FindBy(xpath = "//*[text()=' Products']")
-    public WebElement products;
+    @FindBy(css = "#search_product")
+    public WebElement searchInput;
 
-    @FindBy(xpath = "(//a[contains(@href, '/product_details/')])[1]")
-    public WebElement firstProductViewButton;
+    @FindBy(xpath = "//*[@type = 'button' and @id='submit_search']")
+    public WebElement searchButton;
 
-    @FindBy(xpath = "//div[@class='product-information']/h2")
-    public WebElement productName;
+    @FindBy(xpath = "//h2[@class='title text-center' and text()='Searched Products']")
+    public WebElement searchedProducts;
 
-    @FindBy(xpath = "//p[contains(text(), 'Category:')]")
-    public WebElement category;
-
-    @FindBy(xpath = "//span[contains(text(), 'Rs.')]")
-    public WebElement productPrice;
-
-    @FindBy(xpath = "//p[b[contains(text(), 'Availability:')]]")
-    public WebElement availability;
-
-    @FindBy(xpath = "//p[b[contains(text(), 'Condition:')]]")
-    public WebElement condition;
-
-    @FindBy(xpath = "//p[b[contains(text(), 'Brand:')]]")
-    public WebElement brand;
-
-    // Mevcut URL'yi getiren metot
-    public String getCurrentPageUrl(){
-        return Driver.getDriver().getCurrentUrl();
-    }
-
-    // URL'nin belirli bir kelimeyi içerip içermediğini kontrol eden metot
-    public boolean isUrlCorrect(String expectedKeyword) {
-        return  Driver.getDriver().getCurrentUrl().contains(expectedKeyword);
-    }
+    // Aranan ürünlerin isimlerini içeren tüm elementleri liste olarak alıyoruz
+    @FindBy(xpath = "//div[@class='productinfo text-center']/p")
+    public List<WebElement> searchedProductNames;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,62 +1,46 @@
 package stepdefinitions;
 
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 import pages.ProductSearchPage;
 
-import java.util.List;
-
 public class ProductSearchStepDefs {
+    ProductSearchPage productSearch = new ProductSearchPage();
 
-    ProductSearchPage productPage = new ProductSearchPage();
+    @When("kullanici search inputuna {string} yazar")
+    public void kullaniciSearchInputunaYazar(String arg0) {
+        productSearch.searchInput.sendKeys(arg0);
 
-    @When("Products butonuna tıkla")
-    public void productsButonunaTıkla() {
-        productPage.products.click();
     }
 
-    @Then("ürünler sayfasında olduğunu dogrula")
-    public void ürünlerSayfasındaOlduğunuDogrula() {
-        String expectedUrlPart = "products";
-        String actualUrl = productPage.getCurrentPageUrl();
-
-        // JUnit kullanarak doğrulama
-        Assert.assertTrue("Hata: URL beklenen metni içermiyor! Mevcut URL: " + actualUrl,
-                actualUrl.contains(expectedUrlPart));
+    @And("arama butonuna tıklar")
+    public void aramaButonunaTıklar() {
+        productSearch.searchButton.click();
     }
 
-    @And("ilk ürünün ürünü görüntüle butonuna basılır")
-    public void ilkÜrününÜrünüGörüntüleButonunaBasılır() {
-        productPage.firstProductViewButton.click();
+    @Then("aranan urunler sayfasinda oldugunu dogrula")
+    public void arananUrunlerSayfasindaOldugunuDogrula() {
+        Assert.assertEquals("SEARCHED PRODUCTS", productSearch.searchedProducts.getText());
     }
 
-    @Then("Tüm ürünler sayfasına gidildiğini dogrula:")
-    public void tümÜrünlerSayfasınaGidildiğiniDogrula(List<String> fields) {
-        for (String field : fields) {
-            switch (field) {
-                case "Product Name":
-                    Assert.assertTrue(productPage.productName.isDisplayed());
-                    break;
-                case "Price":
-                    Assert.assertTrue(productPage.productPrice.isDisplayed());
-                    break;
-                case "Availability":
-                    Assert.assertTrue(productPage.availability.isDisplayed());
-                    break;
-                case "category":
-                    Assert.assertTrue(productPage.category.isDisplayed());
-                    break;
-                case "condition":
-                    Assert.assertTrue(productPage.condition.isDisplayed());
-                    break;
-                case "brand":
-                    Assert.assertTrue(productPage.brand.isDisplayed());
-                    break;
-            }
+    @Then("Arama ile ilgili tüm ürünlerin görünür olduğunu doğrulayın")
+    public void aramaIleIlgiliTümÜrünlerinGörünürOlduğunuDoğrulayın() {
+        for (WebElement product : productSearch.searchedProductNames) {
+            // .toLowerCase(Locale.ROOT) veya (Locale.ENGLISH) kullanarak
+            // "I" harfinin "ı" değil, "i" olmasını sağlıyoruz.
+            String originalName = product.getText().toLowerCase(java.util.Locale.ENGLISH);
+
+            System.out.println("Kontrol ediliyor (English Locale): " + originalName);
+
+            // Şimdi hem 't' hem 'shirt' (noktalı i ile) güvenle aranabilir
+            boolean containsT = originalName.contains("t");
+            boolean containsShirt = originalName.contains("shirt");
+
+            Assert.assertTrue("Hata: " + originalName + " ürünü beklenen kelimeleri içermiyor!",
+                    containsT && containsShirt);
         }
     }
-
 }
