@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {"html:target/cucumber-reports.html"}, // Rapor oluşturur
         features = "src/test/resources/features",
         glue = "stepdefinitions",
-        tags = "@register_when_paying", // Sadece bu tag'li testleri çalıştırır
+        tags = "@registration_before_payment", // Sadece bu tag'li testleri çalıştırır
         dryRun = false  // Eksik adım var mı diye kontrol etmek için true yapabilirsin
 )
 public class Runner {}

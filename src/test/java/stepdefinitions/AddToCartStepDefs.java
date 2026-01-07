@@ -15,6 +15,10 @@ public class AddToCartStepDefs {
 
     @When("ilk {int} ürünü sepete ekler")
     public void ilk_urunu_sepete_ekle(Integer urunSayisi) {
+
+        ReusableMethods.handleGoogleAds();
+        
+
         for (int i = 0; i < urunSayisi; i++) {
             // 1. Ürünün üstüne gel (Bazen hover gerekebilir, gerekmiyorsa direkt tıkla)
             // Listeler 0'dan başlar, i=0 ilk üründür.

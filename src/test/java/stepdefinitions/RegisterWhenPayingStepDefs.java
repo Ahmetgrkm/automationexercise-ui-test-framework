@@ -60,6 +60,14 @@ public class RegisterWhenPayingStepDefs {
     @And("ödeme butonuna basar")
     public void ödemeButonunaBasar() {
         registerWhenPayingPage.payButton.click();
+
+        // Kısa bir bekleme (reklamın URL'ye yansıması için)
+        try { Thread.sleep(1000); } catch (InterruptedException e) {}
+
+        // EĞER URL'de reklam eki varsa sayfayı REFRESH yap
+        if (Driver.getDriver().getCurrentUrl().contains("#google_vignette")) {
+            Driver.getDriver().navigate().refresh();
+        }
     }
 
     @Then("siparişin başarıyla verildiğini doğrular")
