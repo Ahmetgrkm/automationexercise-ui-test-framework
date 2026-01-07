@@ -29,7 +29,7 @@ public class RegistrationStepDefs {
     public void yeni_kullanici_kisminda_ve_bilgilerini_girer(String isim, String email) {
         page.signupNameKutusu.sendKeys(faker.name().fullName());
         //page.signupEmailKutusu.sendKeys(faker.internet().emailAddress());
-        page.signupEmailKutusu.sendKeys("mehmet@gmail.com");
+        page.signupEmailKutusu.sendKeys(faker.internet().emailAddress());
     }
 
     @When("{string} butonuna tıklar")
