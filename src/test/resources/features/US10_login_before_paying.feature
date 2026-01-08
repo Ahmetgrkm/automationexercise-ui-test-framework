@@ -4,7 +4,6 @@
     Background:
       Given kullanıcı "url" sayfasına gider
       Then Ana sayfanın başarıyla göründüğünü doğrular
-      Then  Ana sayfanın başarıyla göründüğünü doğrular
       When kullanıcı "Signup / Login" butonuna tıklar
       Then  'Hesabınıza giriş yapın' yazısının görünür olduğunu doğrular
       And   Geçerli bir e-posta ve şifre girer
