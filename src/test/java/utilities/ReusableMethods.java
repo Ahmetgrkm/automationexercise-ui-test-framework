@@ -73,4 +73,14 @@ public class ReusableMethods {
             e.printStackTrace();
         }
     }
+    public static void removeAdsWithJS() {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+            // Sayfadaki tüm google reklamlarını ve iframe'lerini bulup söküp atar
+            js.executeScript("var ads = document.querySelectorAll('ins.adsbygoogle, div[id*=\"google_ads\"], iframe[id*=\"aswift\"], #dismiss-button');" +
+                    "for (var i = 0; i < ads.length; i++) { ads[i].remove(); }");
+            // Sayfanın üzerindeki gri/şeffaf katmanı (reklam örtüsü) kaldırır
+            js.executeScript("document.body.style.overflow = 'auto';");
+        } catch (Exception e) {}
+    }
 }
