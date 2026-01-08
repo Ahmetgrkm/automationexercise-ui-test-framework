@@ -41,8 +41,8 @@ public class LoginStepDefs {
 
     @And("Geçerli bir e-posta ve şifre girer")
     public void geçerliBirEPostaVeŞifreGirer() {
-        loginPage.Loginemail.sendKeys("mehmet44@gmail.com");
-        loginPage.Loginpassword.sendKeys("12345");
+        loginPage.Loginemail.sendKeys("oyuncu1@gmail.com");
+        loginPage.Loginpassword.sendKeys("444444");
     }
 
     @And("Yanlis Mail ve Sifre girer.")
