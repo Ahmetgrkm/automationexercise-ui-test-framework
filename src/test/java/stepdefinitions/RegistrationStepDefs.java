@@ -9,6 +9,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 
 public class RegistrationStepDefs {
+    public static String kayıtEdilenAdres;
 
     // Page objesini oluşturarak elementlere ulaşıyoruz
     RegisterPage page = new RegisterPage();
@@ -63,7 +64,10 @@ public class RegistrationStepDefs {
         page.firstNameKutusu.sendKeys(faker.name().firstName());
         page.lastNameKutusu.sendKeys(faker.name().lastName());
         page.companyKutusu.sendKeys("Microsoft");
-        page.adressKutusu.sendKeys(faker.address().fullAddress());
+
+        kayıtEdilenAdres = faker.address().fullAddress();
+        page.adressKutusu.sendKeys(kayıtEdilenAdres);
+
         page.selectCountry();
         page.stateKutusu.sendKeys(faker.address().state());
         page.cityKutusu.sendKeys(faker.address().city());
