@@ -44,6 +44,7 @@ public class ReusableMethods {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
+
     public static void handleGoogleAds() {
         try {
             // 1. Önce sayfanın reklamlı URL'de kalıp kalmadığını kontrol et

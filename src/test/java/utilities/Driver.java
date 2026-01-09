@@ -34,6 +34,20 @@ public class Driver {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     break;
+                case "brave":
+                    // Brave, Chromium tabanlı olduğu için ChromeOptions kullanıyoruz
+                    ChromeOptions braveOptions = new ChromeOptions();
+
+                    // Config'den Brave'in .exe yolunu çekiyoruz
+                    String bravePath = ConfigReader.getProperty("brave.path");
+                    braveOptions.setBinary(bravePath);
+
+                    // Hazır elimiz değmişken Brave'in kendi reklam engelleyicisini de aktif tutalım
+                    braveOptions.addArguments("--start-maximized");
+
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver(braveOptions);
+                    break;
             }
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
