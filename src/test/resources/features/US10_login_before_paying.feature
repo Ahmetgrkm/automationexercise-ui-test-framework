@@ -21,5 +21,3 @@
         When kart bilgilerini girer
         And ödeme butonuna basar
         Then siparişin başarıyla verildiğini doğrular
-        When  'Delete Account' butonuna tıklar
-        Then  'HESAP SILINDI!' yazısının görünür olduğunu doğrular

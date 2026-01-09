@@ -12,8 +12,7 @@ Feature: US02 Kullanıcı başarılı bir şekilde login olabilmeli
       And   Geçerli bir e-posta ve şifre girer
       And   'login' butonuna tıklar
       Then  'Kullanıcı adı olarak giriş yapıldı' yazısının görünür olduğunu doğrular
-      When  'Delete Account' butonuna tıklar
-      Then  'HESAP SILINDI!' yazısının görünür olduğunu doğrular
+
 
       @FalseLogin
       Scenario: TC01 Kullanıcı yanlış mail ve şifre girerek login olamaz
