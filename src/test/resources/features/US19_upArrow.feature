@@ -8,3 +8,10 @@
         When sayfayı asagı kaydirir
         And yukari ok tusuna basar
         Then sayfanın basındaki baslıgı dogrular
+
+        @orphan_upward_scroll
+        Scenario:  kullanıcı ok tuşu kullanmadan yukarı ve aşağı gider
+          When sayfayı asagı kaydirir
+          Then Abonelik yazısı dogrulanir
+          When sayfayı ok olmadan yukarı kaydırır
+          Then sayfanın basındaki baslıgı dogrular

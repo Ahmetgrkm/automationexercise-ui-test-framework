@@ -30,4 +30,11 @@ public class upArrowStepDefs {
     public void sayfanınBasındakiBaslıgıDogrular() {
         Assert.assertEquals("Full-Fledged practice website for Automation Engineers",upArrowPage.message.getText());
     }
+
+    @When("sayfayı ok olmadan yukarı kaydırır")
+    public void sayfayıOkOlmadanYukarıKaydırır() {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+
+        js.executeScript("window.scrollTo(0, 0);");
+    }
 }
