@@ -33,6 +33,15 @@ public class RegistrationStepDefs {
         page.signupEmailKutusu.sendKeys(faker.internet().emailAddress());
     }
 
+    @When("yeni kullanıcı kısmında zaten kayıtlı  bilgileri girer")
+    public void yeni_kullanici_kisminda_kayıtlı_bilgilerini_girer() {
+        page.signupNameKutusu.sendKeys("mehmet");
+        //page.signupEmailKutusu.sendKeys(faker.internet().emailAddress());
+        page.signupEmailKutusu.sendKeys("mehmet2344@gmail.com");
+    }
+
+
+
     @When("{string} butonuna tıklar")
     public void butonuna_tiklar(String butonIsmi) {
         if (butonIsmi.equalsIgnoreCase("Signup / Login")) {

@@ -15,6 +15,6 @@ Feature: US01 Kullanıcı Kayıt Fonksiyonu
     @already_register
     Scenario: Kullanıcı zaten var olan email ile kayıt olmaya çalışır
       When kullanıcı "Signup / Login" butonuna tıklar
-      And yeni kullanıcı kısmında "isim" ve "email" bilgilerini girer
+      And yeni kullanıcı kısmında zaten kayıtlı  bilgileri girer
       And "Signup" butonuna tıklar
       Then "Email Address already exist!" yazısının görünür olduğunu doğrular

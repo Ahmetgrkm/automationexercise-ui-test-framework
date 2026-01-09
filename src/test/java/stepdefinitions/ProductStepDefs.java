@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.ProductPage;
+import utilities.ReusableMethods;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class ProductStepDefs {
 
     @And("ilk ürünün ürünü görüntüle butonuna basılır")
     public void ilkÜrününÜrünüGörüntüleButonunaBasılır() {
-        productPage.firstProductViewButton.click();
+        ReusableMethods.clickWithJS(productPage.firstProductViewButton);
     }
 
     @Then("Tüm ürünler sayfasına gidildiğini dogrula:")

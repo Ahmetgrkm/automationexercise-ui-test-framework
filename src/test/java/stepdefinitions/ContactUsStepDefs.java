@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.ContactUsPage;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class ContactUsStepDefs {
     ContactUsPage contactUs = new ContactUsPage();
@@ -43,6 +44,7 @@ public class ContactUsStepDefs {
     @When("Submit butonuna basar")
     public void submitButonunaBasar() {
         contactUs.submitButton.click();
+        ReusableMethods.waitFor(2);
         Driver.getDriver().switchTo().alert().accept();
     }
     @And("Home butonuna tıklar")
